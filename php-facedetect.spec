@@ -14,6 +14,7 @@ Source0:	http://www.xarg.org/download/facedetect-%{version}.tar.gz
 Source1:	B17_facedetect.ini
 Patch0:		facedetect-dso-link-workaround.patch
 Patch1:		facedetect-1.0.1-opencv-2.2.0.patch
+Patch2:		facedetect-1.0.1-php54x.diff
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	opencv-devel >= 2.2.0
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -30,6 +31,7 @@ of their coordinates.
 %setup -q -n facedetect
 %patch0 -p1
 %patch1 -p1
+%patch2 -p0
 
 sed -i 's/\r//' CREDITS
 
