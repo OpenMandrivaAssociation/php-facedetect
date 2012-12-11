@@ -79,3 +79,31 @@ rm -rf %{buildroot}
 %config(noreplace) %attr(0644,root,root) %{_sysconfdir}/php.d/%{inifile}
 %attr(0755,root,root) %{_libdir}/php/extensions/%{soname}
 
+
+
+%changelog
+* Sun May 06 2012 Oden Eriksson <oeriksson@mandriva.com> 1.0.1-5mdv2012.0
++ Revision: 797101
+- fix build
+- rebuild for php-5.4.x
+
+* Sun Jan 15 2012 Oden Eriksson <oeriksson@mandriva.com> 1.0.1-4
++ Revision: 761223
+- rebuild
+
+* Wed Aug 24 2011 Oden Eriksson <oeriksson@mandriva.com> 1.0.1-3
++ Revision: 696416
+- rebuilt for php-5.3.8
+
+* Fri Aug 19 2011 Oden Eriksson <oeriksson@mandriva.com> 1.0.1-2
++ Revision: 695390
+- rebuilt for php-5.3.7
+
+* Thu May 19 2011 Oden Eriksson <oeriksson@mandriva.com> 1.0.1-1
++ Revision: 676197
+- fix build
+- import php-facedetect
+
+
+* Thu May 19 2011 Oden Eriksson <oeriksson@mandriva.com> 1.0.1-1mdv2010.2
+- initial Mandriva package (fedora import)
