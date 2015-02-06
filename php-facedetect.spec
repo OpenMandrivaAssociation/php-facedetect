@@ -6,7 +6,7 @@
 Summary:	PHP extension to access the OpenCV library
 Name:		php-%{modname}
 Version:	1.0.1
-Release:	%mkrel 5
+Release:	6
 Group:		Development/PHP
 License:	PHP
 URL:		http://www.xarg.org/project/php-facedetect/
