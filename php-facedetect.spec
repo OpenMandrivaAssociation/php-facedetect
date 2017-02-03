@@ -5,16 +5,13 @@
 
 Summary:	PHP extension to access the OpenCV library
 Name:		php-%{modname}
-Version:	1.0.1
-Release:	6
+Version:	1.1.0
+Release:	1
 Group:		Development/PHP
 License:	PHP
 URL:		http://www.xarg.org/project/php-facedetect/
-Source0:	http://www.xarg.org/download/facedetect-%{version}.tar.gz
+Source0:	http://www.xarg.org/download/PHP-Facedetect-%{version}.tar.gz
 Source1:	B17_facedetect.ini
-Patch0:		facedetect-dso-link-workaround.patch
-Patch1:		facedetect-1.0.1-opencv-2.2.0.patch
-Patch2:		facedetect-1.0.1-php54x.diff
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	opencv-devel >= 2.2.0
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -28,10 +25,8 @@ of their coordinates.
 
 %prep
 
-%setup -q -n facedetect
-%patch0 -p1
-%patch1 -p1
-%patch2 -p0
+%setup -q -n PHP-Facedetect-%{version}
+%apply_patches
 
 sed -i 's/\r//' CREDITS
 
