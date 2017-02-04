@@ -1,0 +1,56 @@
+From faffe256ccc88aaefe4565ec68d3369ab41e6a16 Mon Sep 17 00:00:00 2001
+From: Mathieu Parent <math.parent@gmail.com>
+Date: Tue, 5 Apr 2016 23:17:04 +0200
+Subject: [PATCH] Fix PHP7
+
+---
+ facedetect.c | 23 +++++++++++++++++------
+ 1 file changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/facedetect.c b/facedetect.c
+index e630926..6bc73f6 100644
+--- a/facedetect.c
++++ b/facedetect.c
+@@ -82,7 +82,12 @@ static void php_facedetect(INTERNAL_FUNCTION_PARAMETERS, int return_type)
+ 	char *file, *casc;
+ 	long flen, clen;
+ 
++#ifdef ZEND_ENGINE_3
++	zval array;
++#else
+ 	zval *array;
++#endif
++	zval *pArray;
+ 
+ 	CvHaarClassifierCascade* cascade;
+ 	IplImage *img, *gray;
+@@ -119,17 +124,23 @@ static void php_facedetect(INTERNAL_FUNCTION_PARAMETERS, int return_type)
+ 		if(faces && faces->total > 0) {
+ 			int i;
+ 			for(i = 0; i < faces->total; i++) {
++#ifdef ZEND_ENGINE_3
++				ZVAL_NEW_ARR(&array);
++				pArray = &array;
++#else
+ 				MAKE_STD_ZVAL(array);
+-				array_init(array);
++				pArray = array;
++#endif
++				array_init(pArray);
+ 
+ 				rect = (CvRect *)cvGetSeqElem(faces, i);
+ 
+-				add_assoc_long(array, "x", rect->x);
+-				add_assoc_long(array, "y", rect->y);
+-				add_assoc_long(array, "w", rect->width);
+-				add_assoc_long(array, "h", rect->height);
++				add_assoc_long(pArray, "x", rect->x);
++				add_assoc_long(pArray, "y", rect->y);
++				add_assoc_long(pArray, "w", rect->width);
++				add_assoc_long(pArray, "h", rect->height);
+ 
+-				add_next_index_zval(return_value, array);
++				add_next_index_zval(return_value, pArray);
+ 			}
+ 		}
+ 	} else {

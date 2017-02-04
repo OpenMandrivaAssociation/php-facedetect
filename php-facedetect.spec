@@ -6,12 +6,13 @@
 Summary:	PHP extension to access the OpenCV library
 Name:		php-%{modname}
 Version:	1.1.0
-Release:	1
+Release:	2
 Group:		Development/PHP
 License:	PHP
 URL:		http://www.xarg.org/project/php-facedetect/
 Source0:	http://www.xarg.org/download/PHP-Facedetect-%{version}.tar.gz
 Source1:	B17_facedetect.ini
+Patch1:		php7.patch
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	opencv-devel >= 2.2.0
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
