@@ -27,7 +27,7 @@ of their coordinates.
 %prep
 
 %setup -q -n PHP-Facedetect-%{version}
-%apply_patches
+%autopatch -p1
 
 sed -i 's/\r//' CREDITS
 
