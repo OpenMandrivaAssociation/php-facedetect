@@ -9,7 +9,7 @@ Version:	1.1.0
 Release:	2
 Group:		Development/PHP
 License:	PHP
-URL:		http://www.xarg.org/project/php-facedetect/
+URL:		https://www.xarg.org/project/php-facedetect/
 Source0:	http://www.xarg.org/download/PHP-Facedetect-%{version}.tar.gz
 Source1:	B17_facedetect.ini
 Patch1:		php7.patch
